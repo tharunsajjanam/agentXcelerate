@@ -2,31 +2,59 @@
 
 Artha-X is a web-based financial agent application designed to provide a user interface for financial interactions and data presentation. It serves as the front-end component of a larger financial management system, handling user requests and displaying processed information.
 
+
 ## Features
 
-* **Web-based Interface**: Accessible via a browser.
-* **User Interaction**: Designed to handle user inputs and requests for financial operations.
-* **Data Presentation**: Displays financial data and analysis results in a user-friendly format.
-* **Modular Design**: Structured to integrate with backend services for complex financial logic.
-* **voice based** : speaks multilingual and answers your questions from finance.
+* **Web-based Interface**: Provides an accessible user interface through a standard web browser.
+* **User Interaction & Query Handling**: Designed to capture and process user inputs and specific requests related to financial operations.
+* **Dynamic Data Presentation**: Displays real-time or historical financial data, visualized through charts and tables, and presents analysis results in an intuitive format.
+* **Voice-Based Interaction**: Enables users to interact with the application using voice commands.
+    * **Multilingual Support**: Processes and responds to financial queries in multiple languages.
+    * **Natural Language Understanding (NLU)**: Interprets complex financial questions posed in natural language.
+* **Backend Service Integration**: Seamlessly connects with robust backend services (e.g., `fi-mcp-dev`) for executing high-volume financial computations, accessing core financial logic, and retrieving data.
+* **Modular Architecture**: Structured for easy extension and integration of new features and financial modules.
+
+## Next Scope of Features (Future Enhancements)
+
+* **Personalized Financial Insights**: Offer tailored advice and recommendations based on individual user spending patterns, investment goals, and risk profiles.
+* **Predictive Analytics**: Implement models for forecasting future financial trends, budget adherence, and potential investment outcomes.
+* **Advanced Data Visualization**: Incorporate more interactive and customizable dashboards for deeper financial data exploration.
+* **Integration with External Financial APIs**: Connect with third-party banking, investment, or market data APIs to provide a holistic financial view.
+* **Transaction Categorization & Analysis**: Automatically categorize transactions and provide detailed spending analysis, identifying areas for optimization.
+* **Goal Tracking & Planning**: Allow users to set financial goals (e.g., savings, debt repayment) and track their progress, offering actionable plans.
+* **Security Enhancements**: Implement advanced authentication (e.g., MFA) and data encryption measures to ensure robust security for sensitive financial information.
+* **Notifications & Alerts**: Provide timely alerts for unusual activity, budget overruns, bill reminders, or market changes.
+* **Mobile Responsiveness**: Optimize the web interface for seamless use across various devices including smartphones and tablets.
+
 
 ## Project Structure
 
 The `arthax` directory is organized as follows:
 
+```
 arthax/
 ├── app.py              # The main Flask application entry point.
 ├── requirements.txt    # Lists all Python dependencies for the application.
 └── templates/          # Contains Jinja2 HTML templates for the web interface.
     └── index.html      # The main HTML template for the application's home page.
+```
 
 
 ## Technologies Used
 
-* **Python**: The core programming language.
-* **Flask**: A micro web framework for building the web application.
-* **Jinja2**: Templating engine for rendering dynamic HTML content.
-* **HTML/CSS/JavaScript**: For front-end structure, styling, and interactivity.
+* **Python**: The core programming language for the application logic.
+* **Flask**: A lightweight micro web framework used to build the web application's API and serve web pages.
+* **Jinja2**: The templating engine employed for rendering dynamic HTML content within the Flask application.
+* **HTML/CSS/JavaScript**: Standard front-end technologies for structuring, styling, and adding interactivity to the user interface.
+* **Google Cloud Platform (GCP)**: The cloud infrastructure hosting and supporting various services.
+* **Vertex AI**: Google Cloud's machine learning platform, likely used for:
+    * **Natural Language Processing (NLP)**: For understanding user queries.
+    * **Custom Models**: For financial forecasting, risk assessment, or other data analysis.
+* **Other Potential GCP Services (Implied/Common for such apps)**:
+    * **Cloud Run / App Engine**: For deploying and scaling the `arthax` web service.
+    * **Cloud SQL / Firestore**: For database management and storing financial data.
+    * **Cloud Functions**: For serverless backend logic or API interactions.
+    * **Pub/Sub**: For asynchronous communication between services.
 
 ## Setup and Installation
 
@@ -66,6 +94,20 @@ To set up and run the `arthax` application locally, follow these steps:
     pip install -r requirements.txt
     ```
 
+6.  **Configure Environment Variables (`.env` file):**
+    Create a `.env` file in the `arthax/` directory to store your Google Cloud project configuration. This file is typically ignored by Git (as specified in the `.gitignore` file) for security reasons and should **not** be committed to version control.
+
+    ```bash
+  
+    nano .env
+    ```
+    Change the following lines to the `.env` file, replacing `YOUR_PROJECT_ID` with your actual Google Cloud Project ID and `YOUR_GCP_REGION` with the desired GCP region (e.g., `us-central1`, `asia-south1`):
+
+    ```
+    PROJECT_ID=YOUR_PROJECT_ID
+    LOCATION=YOUR_GCP_REGION
+    ```
+    Save and exit `nano` (`Ctrl+O`, Enter, `Ctrl+X`).
 
 ## Prerequisites: Setting Up fi-mcp-dev
 
@@ -113,4 +155,4 @@ To run the `arthax` Flask application:
     The application will typically be accessible at `http://127.0.0.1:5000/` in your web browser.
 
 ## HACKATHON
-    this is for only hackathon not for any public usage. 
+    This is for hackathon use only, not for public usage.
